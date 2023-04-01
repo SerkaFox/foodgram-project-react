@@ -10,7 +10,7 @@ def get_list_allowed(allowed: str) -> list:
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 SECRET_KEY = os.getenv('SECRET_KEY', default='your_secret_key')
 
 DEBUG = os.getenv('DEBUG', default=True)
