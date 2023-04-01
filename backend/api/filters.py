@@ -1,7 +1,10 @@
+import django_filters
 from django.db.models import BooleanField, ExpressionWrapper, Q
 from django_filters.rest_framework import FilterSet, filters
 
 from recipes.models import Ingredient, Recipe
+
+from backend.recipes.models import Tag, User
 
 
 class IngredientFilter(FilterSet):
@@ -24,9 +27,13 @@ class IngredientFilter(FilterSet):
         ).order_by('-startswith')
 
 
-class RecipeFilter(FilterSet):
+class RecipeFilter(django_filters.FilterSet):
     """Фильтр рецептов по автору/тегу/подписке/наличию в списке покупок"""
-    tags = filters.AllValuesMultipleFilter(field_name='tags__slug')
+    tags = filters.AllValuesMultipleFilter(field_name='tags__slug',
+                                           to_field_name='slug',
+                                           queryset=Tag.objects.all(),
+                                           )
+    author = django_filters.ModelChoiceFilter(queryset=User.objects.all())
     is_favorited = filters.BooleanFilter(method='filter_is_favorited')
     is_in_shopping_cart = filters.BooleanFilter(
         method='filter_is_in_shopping_cart')
