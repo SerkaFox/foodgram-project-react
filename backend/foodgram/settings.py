@@ -131,7 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 # Internationalization
-# https://docs.djangoproject.com/en/2.2/topics/i18n/приаевт
+# https://docs.djangoproject.com/en/2.2/topics/i18n/приаевтпока
 
 LANGUAGE_CODE = 'en-gb'
 
