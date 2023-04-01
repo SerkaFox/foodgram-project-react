@@ -8,7 +8,7 @@
 
  «Продуктовый помощник»: сайт, на котором пользователи будут публиковать рецепты, добавлять чужие рецепты в избранное и подписываться на публикации других авторов. Сервис «Список покупок» позволит пользователям создавать список продуктов, которые нужно купить для приготовления выбранных блюд. 
 
-[![workflow food](https://github.com/SerkaFox/foodgram-project-react/actions/workflows/main.yml/badge.svg)
+![workflow food](https://github.com/SerkaFox/foodgram-project-react/actions/workflows/main.yml/badge.svg)
 -
 
 
@@ -252,13 +252,12 @@ jobs:
           message: ${{ github.workflow }} Ну что,Бразер) интересно,что дальше ? ) 
 ```
 ### **Admin:**
-```
+
 http://158.160.46.202/admin/
-```
 
 Пробуем 
-```
+
 http://158.160.46.202/signin
-```
+
 ### **Автор**
 Svitkin Sergey
