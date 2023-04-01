@@ -68,13 +68,13 @@ jobs:
             echo ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }} >> .env
             sudo docker-compose up -d
 
-  send_message_deploy:
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
-      - name: send message
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{ github.workflow }} Ну что,Бразер) интересно,что дальше ? ) 
+ # send_message_deploy:
+ #   runs-on: ubuntu-latest
+ ##   needs: deploy
+  #  steps:
+  #    - name: send message
+  #      uses: appleboy/telegram-action@master
+  #      with:
+  #        to: ${{ secrets.TELEGRAM_TO }}
+  #        token: ${{ secrets.TELEGRAM_TOKEN }}
+  #        message: ${{ github.workflow }} Ну что,Бразер) интересно,что дальше ? )
