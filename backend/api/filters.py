@@ -29,7 +29,7 @@ class IngredientFilter(FilterSet):
 
 class RecipeFilter(django_filters.FilterSet):
     """Фильтр рецептов по автору/тегу/подписке/наличию в списке покупок"""
-    tags = filters.ModelChoiceFilter(field_name='tags__slug',
+    tags = filters.ModelMultipleChoiceFilter(field_name='tags__slug',
                                            to_field_name='slug',
                                            queryset=Tag.objects.all(),
                                            )
