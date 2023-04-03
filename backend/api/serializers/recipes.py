@@ -71,7 +71,7 @@ class RecipeSerializer(serializers.ModelSerializer):
             )
         unique_ings = []
         ingredients = self.initial_data.get('ingredients')
-        print(ingredients,'ингредиенты подъехали')
+        print(ingredients, 'ингредиенты подъехали')
         for ingredient in ingredients:
             name = ingredient['id']
             if int(ingredient['amount']) <= 0:
