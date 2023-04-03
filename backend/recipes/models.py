@@ -121,7 +121,7 @@ class RecipeIngredient(models.Model):
             MaxValueValidator(
             limit_value=10000,
             message='Количество должно не больше 10000'),
-        ),
+        )
     )
 
     class Meta:
