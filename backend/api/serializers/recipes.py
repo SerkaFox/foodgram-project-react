@@ -65,10 +65,41 @@ class RecipeSerializer(serializers.ModelSerializer):
         list_ingr = [item['ingredient'] for item in data['ingredients']]
         all_ingredients, distinct_ingredients = (
             len(list_ingr), len(set(list_ingr)))
-
         if all_ingredients != distinct_ingredients:
             raise ValidationError(
                 {'error': 'Ингредиенты должны быть уникальными'}
+            )
+        unique_ings = []
+        for ingredient in list_ingr:
+            name = ingredient['id']
+            if int(ingredient['amount']) <= 0:
+                raise serializers.ValidationError(
+                    f'Не корректное количество для {name}, не меньше нуля'
+                )
+            if int(ingredient['amount']) > 10000:
+                raise serializers.ValidationError(
+                    f'Не корректное количество для {name}, слишком много'
+                )
+            if not isinstance(ingredient['amount'], int):
+                raise serializers.ValidationError(
+                    'Количество ингредиентов должно быть целым числом'
+                )
+            if name not in unique_ings:
+                unique_ings.append(name)
+            else:
+                raise serializers.ValidationError(
+                    'В рецепте не может быть повторяющихся ингредиентов'
+                )
+        return data
+
+    def validate_cooking_time(self, data):
+        if data <= 0:
+            raise serializers.ValidationError(
+                'Время приготовления не может быть меньше 1 минуты'
+            )
+        if data > 360:
+            raise serializers.ValidationError(
+                'Время приготовления не может быть больше 6 часов'
             )
         return data
 
