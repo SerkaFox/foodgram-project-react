@@ -72,7 +72,7 @@ class RecipeSerializer(serializers.ModelSerializer):
             )
         return data
 
-    def get_ingredients(self, recipe, ingredients):
+    def create_ingredients(self, recipe, ingredients):
         RecipeIngredient.objects.bulk_create(
             RecipeIngredient(
                 recipe=recipe,
