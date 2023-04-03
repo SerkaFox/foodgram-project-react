@@ -70,9 +70,7 @@ class RecipeSerializer(serializers.ModelSerializer):
                 {'error': 'Ингредиенты должны быть уникальными'}
             )
         unique_ings = []
-        ingredients = self.initial_data.get('ingredients')
-        print(ingredients, 'ингредиенты подъехали')
-        for ingredient in ingredients:
+        for ingredient in list_ingr:
             name = ingredient['id']
             if int(ingredient['amount']) <= 0:
                 raise serializers.ValidationError(
